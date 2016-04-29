@@ -16,4 +16,11 @@ apache::vhost { 'cr.softneta.com':
   docroot => '/var/www/site',
 }
 
-include apache::mod::php
+class { 'apache::mod::php':
+  before => File['/etc/php5/apache2/conf.d/20-include.ini']
+}
+
+file { '/etc/php5/apache2/conf.d/20-include.ini':
+  ensure  => file,
+  content => "include_path = /usr/share/composer\n"
+}

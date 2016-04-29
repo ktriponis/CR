@@ -8,6 +8,7 @@ Vagrant.configure(2) do |config|
   config.vm.network "forwarded_port", guest: 80, host: 1234
 
   config.vm.synced_folder "src", "/var/www/site"
+  config.vm.synced_folder "vendor", "/usr/share/composer"
 
   config.vm.provision "shell", path: "server/modules.sh"
 
