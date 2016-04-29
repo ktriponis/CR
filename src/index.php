@@ -1,33 +1,21 @@
 <?php
 require_once 'autoload.php';
 
-spl_autoload_register(function ($class) {
-    $class = substr($class, strrpos($class, '\\') + 1);
-    $classDirectories = array('repository', 'controller', 'entity');
-    foreach ($classDirectories as $dir) {
-        $path = $dir . DIRECTORY_SEPARATOR . $class . '.php';
-        if (file_exists($path))
-            /** @noinspection PhpIncludeInspection */
-            include $path;
-    }
-});
-
-function getVar($name)
-{
-    return isset($_POST[$name]) ? $_POST[$name] : null;
-}
+require_once 'ClassLoader.php';
+require_once 'Utils.php';
 
 $postRepository = new CR\Post\PostRepository(sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'messages.txt');
 $postController = new CR\Post\PostController($postRepository);
 
 $error = null;
 if (getVar('action')) {
-    if (!($name = getVar('name')))
+    if (!($name = getVar('name'))) {
         $error = 'Neįvestas vardas';
-    elseif (!($message = getVar('message')))
+    } elseif (!($message = getVar('message'))) {
         $error = 'Neįvesta žinutė';
-    else
+    } else {
         $postController->add($name, $message);
+    }
 }
 
 $loader = new Twig_Loader_Filesystem('templates');
