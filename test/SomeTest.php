@@ -1,6 +1,8 @@
 <?php
 
-class TestSuite extends PHPUnit_Framework_TestCase
+namespace TDD;
+
+class TestSuite extends \PHPUnit_Framework_TestCase
 {
     public function testPrimalFactors()
     {
@@ -21,9 +23,11 @@ class TestSuite extends PHPUnit_Framework_TestCase
     public function findPrimalFactors($n)
     {
         $result = array();
-        for ($div = 2; $n > 1; $div++)
-            for (; $n % $div == 0; $n /= $div)
+        for ($div = 2; $n > 1; $div++) {
+            for (; $n % $div == 0; $n /= $div) {
                 $result[] = $div;
+            }
+        }
         return $result;
     }
 }

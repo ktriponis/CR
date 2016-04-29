@@ -3,12 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>CodeReview Demo</title>
+    <style>
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul > li:nth-child(odd) {
+            background-color: lightgray;
+        }
+
+        li > div.author {
+            text-align: right;
+        }
+
+        form {
+            width: 25em;
+            margin: 0 auto;
+        }
+
+        form .error {
+            color: red;
+            border-bottom: 1px solid gray;
+        }
+
+        form label {
+            display: block;
+        }
+
+        form label + * {
+            width: 100%;
+        }
+
+        form .controls {
+            text-align: right;
+        }
+    </style>
 </head>
 <body>
 <ul>
     {% for post in posts %}
-        <li>asd</li>
+        <li>
+            <div class="message">{{ post.message }}</div>
+            <div class="author">{{ post.author }}</div>
+        </li>
     {% endfor %}
 </ul>
+{% include 'form.twig' %}
 </body>
 </html>
