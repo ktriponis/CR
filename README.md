@@ -1,5 +1,7 @@
 # Code Review Demo
 
+[![Build Status](https://scrutinizer-ci.com/g/ktriponis/CR/badges/build.png)](https://scrutinizer-ci.com/g/ktriponis/CR/build-status)
+
 Basic project fit for testing how code review works.
 
 ## Setup
