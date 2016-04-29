@@ -4,15 +4,16 @@ require_once 'autoload.php';
 require_once 'ClassLoader.php';
 require_once 'Utils.php';
 
-$postRepository = new CR\Post\PostRepository(sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'messages.txt');
+$postRepository = new CR\Post\PostRepository(sys_get_temp_dir() . DIRECTORY_SEPARATOR .'messages.txt');
 $postController = new CR\Post\PostController($postRepository);
 
 $error = null;
-if (getVar('action')) {
-    if (!($name = getVar('name'))) {
-        $error = 'NeÄ¯vestas vardas';
+if (getVar('action'))
+	{
+    if(!($name = getVar('name'))) {
+        $error = 'Neávestas vardas';
     } elseif (!($message = getVar('message'))) {
-        $error = 'NeÄ¯vesta Å¾inutÄ—';
+        $error = 'Neávesta şinutë';
     } else {
         $postController->add($name, $message);
     }
