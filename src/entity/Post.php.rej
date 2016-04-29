@@ -1,0 +1,16 @@
+diff a/src/entity/Post.php b/src/entity/Post.php	(rejected hunks)
+@@ -6,13 +6,13 @@
+ {
+     private $author;
+     private $message;
+ 
+     public function getAuthor()
+     {
+-        return $this->author;
++        return
+     }
+ 
+     public function setAuthor($author)
+     {
+         $this->author = $author;
+     }
