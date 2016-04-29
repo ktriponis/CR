@@ -5,7 +5,7 @@ namespace CR;
 interface Repository
 {
 
-    function save($entity);
+    public function save($entity);
 
-    function load();
+    public function load();
 }
