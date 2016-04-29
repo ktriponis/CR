@@ -2,11 +2,13 @@
 
 namespace CR\Post;
 
+use CR\Repository;
+
 class PostController
 {
     private $repository;
 
-    public function __construct(PostRepository $repository)
+    public function __construct(Repository $repository)
     {
         $this->repository = $repository;
 

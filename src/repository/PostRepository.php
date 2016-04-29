@@ -2,7 +2,9 @@
 
 namespace CR\Post;
 
-class PostRepository
+use CR\Repository;
+
+class PostRepository implements Repository
 {
     private $destination;
 
