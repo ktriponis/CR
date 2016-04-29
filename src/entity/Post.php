@@ -9,7 +9,7 @@ class Post
 
     public function getAuthor()
     {
-        return $this->author;
+        return
     }
 
     public function setAuthor($author)
