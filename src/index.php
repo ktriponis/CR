@@ -14,7 +14,7 @@ if (getVar('action')) {
     } elseif (!($message = getVar('message'))) {
         $error = 'Neįvesta žinutė';
     } else {
-        $postController->add($name, $message);
+        $postController->add($name1, $message);
     }
 }
 

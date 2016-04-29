@@ -39,12 +39,16 @@
         form .controls {
             text-align: right;
         }
+        .red
+        {
+            color:red;
+        }
     </style>
 </head>
 <body>
 <ul>
     {% for post in posts %}
-        <li>
+        <li class="red" >
             <div class="message">{{ post.message }}</div>
             <div class="author">{{ post.author }}</div>
         </li>
