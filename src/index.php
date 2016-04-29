@@ -2,6 +2,7 @@
 require_once 'autoload.php';
 
 spl_autoload_register(function ($class) {
+    $class = substr($class, strrpos($class, '\\') + 1);
     $classDirectories = array('repository', 'controller', 'entity');
     foreach ($classDirectories as $dir) {
         $path = $dir . DIRECTORY_SEPARATOR . $class . '.php';
@@ -16,8 +17,8 @@ function getVar($name)
     return isset($_POST[$name]) ? $_POST[$name] : null;
 }
 
-$postRepository = new PostRepository(sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'messages.txt');
-$postController = new PostController($postRepository);
+$postRepository = new CR\Post\PostRepository(sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'messages.txt');
+$postController = new CR\Post\PostController($postRepository);
 
 $error = null;
 if (getVar('action')) {

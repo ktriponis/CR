@@ -1,5 +1,7 @@
 <?php
 
+namespace CR\Post;
+
 class PostRepository
 {
     private $destination;

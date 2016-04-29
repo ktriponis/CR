@@ -1,5 +1,7 @@
 <?php
 
+namespace CR\Post;
+
 class PostController
 {
     private $repository;
