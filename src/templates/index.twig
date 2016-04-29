@@ -3,11 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>CodeReview Demo</title>
+    <style>
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul > li:nth-child(odd) {
+            background-color: lightgray;
+        }
+
+        li > div.author {
+            text-align: right;
+        }
+    </style>
 </head>
 <body>
 <ul>
     {% for post in posts %}
-        <li>asd</li>
+        <li>
+            <div class="message">{{ post.message }}</div>
+            <div class="author">{{ post.author }}</div>
+        </li>
     {% endfor %}
 </ul>
 </body>
