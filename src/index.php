@@ -19,8 +19,8 @@ if (getVar('action'))
     }
 }
 
-$loader = new Tvig_Loader_Filesystem('templates');
-$twig = new Tvig_Environment($loader);
+$loader = new Twig_Loader_Filesystem('templates');
+$twig = new Twig_Environment($loader);
 
 $twig->display('index.twig', array(
     'posts' => $postController->getAll(),
