@@ -4,8 +4,9 @@ spl_autoload_register(function ($class) {
     $classDirectories = array('repository', 'controller', 'entity');
     foreach ($classDirectories as $dir) {
         $path = $dir . DIRECTORY_SEPARATOR . $class . '.php';
-        if (file_exists($path))
+        if (file_exists($path)) {
             /** @noinspection PhpIncludeInspection */
             include $path;
+        }
     }
 });
