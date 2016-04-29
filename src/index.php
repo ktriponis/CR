@@ -1,11 +1,11 @@
 <?php
-require_once 'autoload.php';
+require_once 'autoload2.php';
 
-require_once 'ClassLoader.php';
+require_once 'ClassLoader3.php';
 require_once 'Utils.php';
 
 $postRepository = new CR\Post\PostRepository(sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'messages.txt');
-$postController = new CR\Post\PostController($postRepository);
+$postController = new CR\Post\PostContr2oller($postRepository);
 
 $error = null;
 if (getVar('action')) {
@@ -14,7 +14,7 @@ if (getVar('action')) {
     } elseif (!($message = getVar('message'))) {
         $error = 'Neįvesta žinutė';
     } else {
-        $postController->add($name1, $message);
+        $postController->add($name, $message);
     }
 }
 
