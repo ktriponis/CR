@@ -17,6 +17,28 @@
         li > div.author {
             text-align: right;
         }
+
+        form {
+            width: 25em;
+            margin: 0 auto;
+        }
+
+        form .error {
+            color: red;
+            border-bottom: 1px solid gray;
+        }
+
+        form label {
+            display: block;
+        }
+
+        form label + * {
+            width: 100%;
+        }
+
+        form .controls {
+            text-align: right;
+        }
     </style>
 </head>
 <body>
@@ -28,5 +50,6 @@
         </li>
     {% endfor %}
 </ul>
+{% include 'form.twig' %}
 </body>
 </html>

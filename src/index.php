@@ -2,7 +2,7 @@
 require_once 'autoload.php';
 
 spl_autoload_register(function ($class) {
-    $classDirectories = array('controller', 'entity');
+    $classDirectories = array('repository', 'controller', 'entity');
     foreach ($classDirectories as $dir) {
         $path = $dir . DIRECTORY_SEPARATOR . $class . '.php';
         if (file_exists($path))
@@ -11,8 +11,28 @@ spl_autoload_register(function ($class) {
     }
 });
 
+function getVar($name)
+{
+    return isset($_POST[$name]) ? $_POST[$name] : null;
+}
+
+$postRepository = new PostRepository(sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'messages.txt');
+$postController = new PostController($postRepository);
+
+$error = null;
+if (getVar('action')) {
+    if (!($name = getVar('name')))
+        $error = 'Neįvestas vardas';
+    elseif (!($message = getVar('message')))
+        $error = 'Neįvesta žinutė';
+    else
+        $postController->add($name, $message);
+}
+
 $loader = new Twig_Loader_Filesystem('templates');
 $twig = new Twig_Environment($loader);
 
-$postController = new PostController();
-$twig->display('index.twig', array('posts' => $postController->getAll()));
+$twig->display('index.twig', array(
+    'posts' => $postController->getAll(),
+    'error' => $error,
+));

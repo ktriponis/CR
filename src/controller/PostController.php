@@ -2,36 +2,31 @@
 
 class PostController
 {
-    private $posts;
+    private $repository;
 
-    public function __construct()
+    public function __construct(PostRepository $repository)
     {
-        $this->posts = array();
+        $this->repository = $repository;
 
-        $post = new Post();
-        $post->setAuthor('Vardenis Pavardenis');
-        $post->setMessage('Sveikas Pasauli!');
-        $this->posts[] = $post;
-
-        $post = new Post();
-        $post->setAuthor('Geltonas Inkaras');
-        $post->setMessage('Skęstu!');
-        $this->posts[] = $post;
-
-        $post = new Post();
-        $post->setAuthor('Pukuotoji Gervė');
-        $post->setMessage('Negali būti');
-        $this->posts[] = $post;
-
-        $post = new Post();
-        $post->setAuthor('Geltonas Inkaras');
-        $post->setMessage(';(');
-        $this->posts[] = $post;
+        if (empty($repository->load())) {
+            $this->add('Vardenis Pavardenis', 'Sveikas Pasauli!');
+            $this->add('Geltonas Inkaras', 'Skęstu!');
+            $this->add('Pukuotoji Gervė', 'Negali būti');
+            $this->add('Geltonas Inkaras', ';(');
+        }
     }
 
 
+    public function add($name, $message)
+    {
+        $post = new Post();
+        $post->setAuthor($name);
+        $post->setMessage($message);
+        $this->repository->save($post);
+    }
+
     public function getAll()
     {
-        return $this->posts;
+        return $this->repository->load();
     }
 }
